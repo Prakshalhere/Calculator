@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./Buttons.css";
 
 const Buttons = ({ calc, setCalc }) => {
@@ -29,16 +29,18 @@ const Buttons = ({ calc, setCalc }) => {
   ];
 
   const numClickHandler = (num) => {
-    setCalc({
-      ...calc,
+    setCalc((prevCalc) => ({
+      ...prevCalc,
       num:
-        calc.num === 0 && num === 0
+        prevCalc.num === 0 && num === 0
           ? "0"
-          : calc.sign
-          ? calc.num + num
-          : String(Number(calc.num.toString() + num)),
-      res: !calc.sign ? 0 : calc.res,
-    });
+          : prevCalc.sign
+          ? String(prevCalc.num) === "0"
+            ? String(num)
+            : String(prevCalc.num) + String(num)
+          : String(Number(prevCalc.num.toString() + num)),
+      res: !prevCalc.sign ? 0 : prevCalc.res,
+    }));
   };
 
   const resetClickHandler = () => {
@@ -48,7 +50,7 @@ const Buttons = ({ calc, setCalc }) => {
       res: 0,
     });
     setSelectedSignButton("");
-    setPrevNum(null)
+    setPrevNum(null);
   };
 
   const removeClickHandler = () => {
@@ -79,39 +81,29 @@ const Buttons = ({ calc, setCalc }) => {
     });
   };
 
-  // const signClickHandler = (sign) => {
-  //   setCalc({
-  //     ...calc,
-  //     sign,
-  //     res: calc.num ? calc.num : calc.res,
-  //     num: 0,
-  //   });
-  //   setSelectedSignButton(sign);
-  // };
-
   const signClickHandler = (sign) => {
     if (calc.sign === sign) {
       setCalc((prevCalc) => ({
         ...prevCalc,
         sign: "",
-        num: prevNum !== null ? prevNum : prevCalc.num, 
+        num: prevNum !== null ? prevNum : prevCalc.num,
       }));
-      setSelectedSignButton(""); 
-      setPrevNum(null)
-    } else {  
-      setPrevNum(calc.num);
+      setSelectedSignButton("");
+      setPrevNum(null);
+    } else {
+      if (calc.num !== 0 && calc.num !== null) {
+        setPrevNum(calc.num);
+      }
       setCalc((prevCalc) => ({
         ...prevCalc,
         sign,
-        res: prevCalc.num || prevCalc.res, 
+        res: prevCalc.num !== 0 ? prevCalc.num : prevCalc.res,
         num: 0,
       }));
       setSelectedSignButton(sign);
     }
   };
-  
-  
-  
+
   const equalsClickHandler = () => {
     if (calc.sign && calc.num) {
       const math = (a, b, sign) => {
@@ -134,18 +126,33 @@ const Buttons = ({ calc, setCalc }) => {
         num: 0,
       });
       setSelectedSignButton("");
-      setPrevNum(null)
+      setPrevNum(null);
     }
   };
   const commaClickHandler = () => {
-    if (!calc.num.toString().includes(".")) {
-      setCalc({
-        ...calc,
-        num: calc.num + ".",
-      });
-    }
-  };
+    setCalc((prevCalc) => {
+      const numHasDecimal = prevCalc.num.toString().includes(".");
+      const resHasDecimal = prevCalc.res.toString().includes(".");
 
+      return {
+        ...prevCalc,
+        num:
+          prevCalc.num === 0 || prevCalc.num === "0"
+            ? resHasDecimal
+              ? prevCalc.res.toString()
+              : prevCalc.res + "."
+            : !numHasDecimal
+            ? prevCalc.num + "."
+            : prevCalc.num,
+        res:
+          prevCalc.num === 0 || prevCalc.num === "0"
+            ? resHasDecimal
+              ? prevCalc.res
+              : prevCalc.res + "."
+            : prevCalc.res,
+      };
+    });
+  };
   useEffect(() => {
     const handleKeyDown = (event) => {
       switch (event.key) {

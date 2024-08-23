@@ -1,66 +1,93 @@
-Calculator App
-Overview
+# Calculator App
+
+## Overview
+
 This is a simple calculator application built with React. It supports basic arithmetic operations and features a user-friendly interface with interactive buttons. The calculator also supports keyboard input and visual feedback for active operations.
 
-Features
-Basic Arithmetic Operations: Addition, subtraction, multiplication, and division.
-Percentage Calculation: Calculate percentages.
-Sign Inversion: Toggle between positive and negative values.
-Reset and Remove: Clear the current input or remove the last digit.
-Keyboard Support: Use the keyboard for quick calculations.
-Active Button Feedback: Highlight the currently selected operation button.
-Components
-Buttons
-The Buttons component renders the calculator buttons and handles their interactions.
+## Features
 
-Features
-Button Click Handling: Processes button clicks to perform calculations or input numbers.
-Keyboard Input Handling: Supports keyboard events for operations and numbers.
-Active Button State: Highlights the active operation button and handles toggling.
-Persistent Number Handling: Retains the current number when toggling operation signs.
-Key Functions
-numClickHandler(num): Handles number button clicks and updates the display.
-resetClickHandler(): Resets the calculator to its initial state.
-removeClickHandler(): Removes the last digit or number.
-invertClickHandler(): Toggles the sign of the current number.
-percentageClickHandler(): Calculates the percentage of the current number.
-signClickHandler(sign): Handles arithmetic operation signs and toggles the active state.
-equalsClickHandler(): Performs the calculation based on the current operation.
-commaClickHandler(): Adds a decimal point to the current number.
-Keyboard Support
-Enter/Equals (=): Perform the calculation.
-Escape: Reset the calculator.
-Backspace: Remove the last digit or number.
-Arithmetic Operators (+, -, /, *): Set the operation sign.
-Decimal Point (.): Add a decimal point.
-Numbers (0-9): Input numbers.
-Percentage (%): Calculate percentages.
-Sign Inversion (+/-): Toggle the sign.
-Installation
-Clone the repository:
+- **Basic Arithmetic Operations**: Addition, subtraction, multiplication, and division.
+- **Percentage Calculation**: Calculate percentages.
+- **Sign Inversion**: Toggle between positive and negative values.
+- **Reset and Remove**: Clear the current input or remove the last digit.
+- **Keyboard Support**: Use the keyboard for quick calculations.
+- **Active Button Feedback**: Highlight the currently selected operation button.
 
-bash
-Copy code
-git clone https://github.com/your-username/calculator-app.git
-Navigate to the project directory:
+## Components
 
-bash
-Copy code
-cd calculator-app
-Install dependencies:
+### Buttons
 
-bash
-Copy code
-npm install
-Start the development server:
+The `Buttons` component renders the calculator buttons and handles their interactions. 
 
-bash
-Copy code
-npm start
+#### Features
 
-Usage
-Click the buttons to perform calculations or type directly using the keyboard.
-Use the AC button to reset the calculator.
-Click or use keyboard operators to perform arithmetic operations.
-The = button or Enter key calculates the result.
-Active operation buttons will highlight to show the current operation.
+- **Button Click Handling**: Processes button clicks to perform calculations or input numbers.
+- **Keyboard Input Handling**: Supports keyboard events for operations and numbers.
+- **Active Button State**: Highlights the active operation button and handles toggling.
+- **Persistent Number Handling**: Retains the current number when toggling operation signs.
+
+#### Key Functions
+
+- `numClickHandler(num)`: Handles number button clicks and updates the display.
+- `resetClickHandler()`: Resets the calculator to its initial state.
+- `removeClickHandler()`: Removes the last digit or number.
+- `invertClickHandler()`: Toggles the sign of the current number.
+- `percentageClickHandler()`: Calculates the percentage of the current number.
+- `signClickHandler(sign)`: Handles arithmetic operation signs and toggles the active state.
+- `equalsClickHandler()`: Performs the calculation based on the current operation.
+- `commaClickHandler()`: Adds a decimal point to the current number.
+
+### Keyboard Support
+
+- **Enter/Equals (`=`)**: Perform the calculation.
+- **Escape**: Reset the calculator.
+- **Backspace**: Remove the last digit or number.
+- **Arithmetic Operators (`+`, `-`, `/`, `*`)**: Set the operation sign.
+- **Decimal Point (`.`)**: Add a decimal point.
+- **Numbers (`0`-`9`)**: Input numbers.
+- **Percentage (`%`)**: Calculate percentages.
+- **Sign Inversion (`+/-`)**: Toggle the sign.
+
+## Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/your-username/calculator-app.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd calculator-app
+    ```
+
+3. Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+4. Start the development server:
+
+    ```bash
+    npm start
+    ```
+
+
+
+## Usage
+
+- Click the buttons to perform calculations or type directly using the keyboard.
+- Use the `AC` button to reset the calculator.
+- Click or use keyboard operators to perform arithmetic operations.
+- The `=` button or `Enter` key calculates the result.
+- Active operation buttons will highlight to show the current operation.
+
+## Contributing
+
+Feel free to fork the repository and submit pull requests. For any issues or suggestions, please open an issue on the GitHub repository.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
